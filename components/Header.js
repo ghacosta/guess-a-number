@@ -5,7 +5,15 @@ import Colors from '../constants/colors';
 
 const Header = ({ title }) => {
   return (
-    <View style={styles.header}>
+    <View
+      style={{
+        ...styles.header,
+        ...Platform.select({
+          ios: styles.headerAndroid,
+          android: styles.headerAndroid
+        })
+      }}
+    >
       <TitleText style={styles.headerTitle}>{title}</TitleText>
     </View>
   );
@@ -16,11 +24,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 90,
     paddingTop: 36,
-    backgroundColor: Platform.OS === 'android' ? Colors.primary : 'white',
-    borderBottomColor: Platform.OS === 'android' ? 'transparent' : '#ccc',
-    borderBottomWidth: Platform.OS === 'android' ? 0 : 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  headerIOS: {
+    backgroundColor: 'white',
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1
+  },
+  headerAndroid: {
+    backgroundColor: Colors.primary
   },
   headerTitle: {
     color: Platform.OS === 'android' ? 'white' : Colors.primary,
