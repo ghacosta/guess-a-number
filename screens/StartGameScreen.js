@@ -147,9 +147,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 15
   },
-  // button: {
-  //   width: Dimensions.get('window').width / 4
-  // },
   input: {
     width: 50,
     textAlign: 'center'
